@@ -22,7 +22,7 @@ instance_id=$( aws ec2 run-instances \
         --instance-ids $instance_id \
         --query 'Reservations[*].Instances[*].PublicIpAddress' \
         --output text
-        )
+    )
 
     else
 
@@ -32,7 +32,7 @@ instance_id=$( aws ec2 run-instances \
         --instance-ids $instance_id \
         --query 'Reservations[*].Instances[*].PrivateIpAddress' \
         --output text
-        )
+    )
 
     fi
 
