@@ -29,9 +29,7 @@ instance_id=$(aws ec2 run-instances \
         IP=$(aws ec2 describe-instances \
         --instance-ids $instance_id \
         --query 'Reservations[*].Instances[*].PrivateIpAddress' \
-        --output text 
-        
-    )
+        --output text)
 
     fi
 
