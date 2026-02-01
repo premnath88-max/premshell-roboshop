@@ -18,7 +18,7 @@ instance_id=$( aws ec2 run-instances \
     if [ $instance == "frontend" ]; then
 
         IP=$(aws ec2 describe-instances \
-        --instance-ids i-066e19026bc2e0f42 \
+        --instance-ids $instance_id \
         --query 'Reservations[*].Instances[*].PublicIpAddress' \
         --output text
         )
@@ -28,12 +28,13 @@ instance_id=$( aws ec2 run-instances \
     
 
         IP=$(aws ec2 describe-instances \
-        --instance-ids i-066e19026bc2e0f42 \
+        --instance-ids $instance_id \
         --query 'Reservations[*].Instances[*].PrivateIpAddress' \
         --output text
         )
 
     fi
 
+ echo "IP Adress :: $IP"
 
 done
