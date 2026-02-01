@@ -25,7 +25,7 @@ instance_id = $( aws ec2 run-instances \
 
     else
 
-    [ $instance == "frontend" ]; then
+    
 
         IP=$(aws ec2 describe-instances \
         --instance-ids i-066e19026bc2e0f42 \
