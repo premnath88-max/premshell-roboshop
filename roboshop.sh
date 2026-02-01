@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 SG_ID="sg-07f113264680f4556"
 AMI_ID="ami-0220d79f3f480ecf5"
@@ -7,7 +7,7 @@ for instance in $@
 
 do
 
-instance_id=$( aws ec2 run-instances \
+    instance_id=$( aws ec2 run-instances \
     --image-id $AMI_ID \
     --instance-type "t3.micro" \
     --security-group-ids $SG_ID \
@@ -17,7 +17,8 @@ instance_id=$( aws ec2 run-instances \
 
     if [ $instance == "frontend" ]; then
 
-        IP=$( aws ec2 describe-instances \
+        IP=$( 
+            aws ec2 describe-instances \
         --instance-ids $instance_id \
         --query 'Reservations[].Instances[].PublicIpAddress' \
         --output text
@@ -27,7 +28,7 @@ instance_id=$( aws ec2 run-instances \
 
     
 
-        IP=$( aws ec2 describe-instances \
+    IP=$( aws ec2 describe-instances \
         --instance-ids $instance_id \
         --query 'Reservations[].Instances[].PrivateIpAddress' \
         --output text
