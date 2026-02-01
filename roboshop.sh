@@ -13,14 +13,13 @@ instance_id=$( aws ec2 run-instances \
     --security-group-ids $SG_ID \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
     --query 'Instances[0].InstanceId' \
-    --output text
-    )
+    --output text )
 
     if [ $instance == "frontend" ]; then
 
         IP=$( aws ec2 describe-instances \
         --instance-ids $instance_id \
-        --query 'Reservations[*].Instances[*].PublicIpAddress' \
+        --query 'Reservations[].Instances[*].PublicIpAddress' \
         --output text
     )
 
@@ -30,7 +29,7 @@ instance_id=$( aws ec2 run-instances \
 
         IP=$( aws ec2 describe-instances \
         --instance-ids $instance_id \
-        --query 'Reservations[*].Instances[*].PrivateIpAddress' \
+        --query 'Reservations[].Instances[].PrivateIpAddress' \
         --output text
     )
 
