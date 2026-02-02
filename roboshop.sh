@@ -3,6 +3,7 @@
 SG_ID="sg-07f113264680f4556"
 AMI_ID="ami-0220d79f3f480ecf5"
 ZONE_ID="Z04979913T03RP44D4M8A"
+DOMAIN_NAME="daws88spremnath.online"
 
 for instance in $@
 
@@ -25,6 +26,7 @@ do
         --output text
     )
 
+        RECORD_NAME="$instance.$DOMAIN_NAME" #mangodb.dawspremnath.online
     else
 
     
@@ -58,6 +60,11 @@ do
             }
         }
     ]
-}'
+}
+
+'
+
+   echo "record updated for $instance"
+
 
 done
