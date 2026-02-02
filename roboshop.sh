@@ -26,7 +26,7 @@ do
         --output text
     )
 
-        RECORD_NAME="$instance.$DOMAIN_NAME" #mangodb.dawspremnath.online
+       RECORD_NAME="$DOMAIN_NAME" #mangodb.dawspremnath.online 
     else
 
     
@@ -37,6 +37,8 @@ do
         --output text
     )
 
+
+RECORD_NAME="$instance.$DOMAIN_NAME" #mangodb.dawspremnath.online
     fi
 
  echo "IP Address :: $IP"
